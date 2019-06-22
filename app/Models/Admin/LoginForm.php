@@ -17,7 +17,8 @@ class LoginForm
                         ->select('admin.*', 'admin_role.name as rolename')
                         ->where([
                             'admin.username'  => $a,
-                            'admin.status'    => 1
+                            'admin.status'    => 1,
+                            'admin_role.status' => 1
                         ])->first();
         $this->password = $b;
     }

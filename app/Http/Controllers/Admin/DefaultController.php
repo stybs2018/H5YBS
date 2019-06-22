@@ -19,8 +19,12 @@ class DefaultController extends Controller
     }
     
     // 管理组页面
-    public function adminRole()
+    public function adminRole(Request $request)
     {
-        
+        switch ($request->method()) {
+            case 'GET': 
+                return view('admin.auth.role');
+                break;
+        }
     }
 }
