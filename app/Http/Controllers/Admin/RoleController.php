@@ -60,5 +60,18 @@ class RoleController extends Controller
     }
     
     //  更新管理组
-    
+    public function update(Request $request)
+    {
+        $id = $request->query('id');
+        
+        try {
+            if (DB::table('admin_role')->where('id', $id)->update($request->input())) {
+                return ['code' => 3001];
+            } else {
+                return ['code' => 3002, 'message' => '更新失败'];
+            }
+        } catch (\Illuminate\Database\QueryException $e) {
+            return ['code' => 3002, 'message' => '更新失败'];
+        }
+    }
 }
