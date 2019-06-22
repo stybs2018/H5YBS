@@ -67,7 +67,7 @@
             page.getChecked(true).map(i => { assign.push(i.id) });
             $.ajax({
                 type: 'POST',
-                url: '/api/admin/rm/assign',
+                url: '/api/admin/admin/role/assign',
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
@@ -76,11 +76,11 @@
                     assign: assign
                 }),
                 success: function (response) {
-                    if (response.code === 100000) {
-                        layer.msg('授权成功', { icon: 1, time: 1000 });
+                    if (response.code == 3001) {
+                        layer.msg('授权成功', { icon: 1, time: 2000 });
                         falg = true;
                     } else {
-                        layer.msg(response.message, { icon: 2, time: 2000 });
+                        layer.msg('授权失败', { icon: 2, time: 2000 });
                     }
                 }
             })

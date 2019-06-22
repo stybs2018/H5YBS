@@ -74,4 +74,25 @@ class RoleController extends Controller
             return ['code' => 3002, 'message' => '更新失败'];
         }
     }
+    
+    //  授权
+    public function assign(Request $request)
+    {
+        $id = $request->input('id');
+        $assign = $request->input('assign');
+        $params = [];
+        
+        foreach ($assign as $i) {
+            array_push($params, ['role' => $id, 'permission' => $i]);
+        }
+        
+        try {
+            DB::table('admin_assign')->where('role', $id)->delete();
+            DB::table('admin_assign')->insert($params);
+            return ['code' => 3001];
+        } catch (\Illuminate\Database\QueryException $e) {
+            return ['code' => 3002, 'message' => '授权失败'];
+        }
+       
+    }
 }

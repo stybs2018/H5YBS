@@ -120,7 +120,7 @@
                         layer.open({
                             title: '授权',
                             type: 2,
-                            area: ['800px', '600px'],
+                            area: ['400px', '500px'],
                             content: "/{{ env('ADMIN_PREFIX', '_admin') }}/admin/role?action=assign&id="+data.id,
                             btn: ['保存'],
                             shadeClose: true,

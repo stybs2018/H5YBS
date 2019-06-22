@@ -3,6 +3,7 @@ USE h5ybs;
 --
 -- Table for Admin Role
 --
+DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS admin_role;
 
 CREATE TABLE admin_role (
@@ -56,7 +57,6 @@ INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Act
 INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', 'admin/role', '管理组', 'PUT');
 INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '删除', 'admin/role', '管理组', 'DELETE');
 
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'admin/role/assign', '管理组', 'GET');
 INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '授权', 'admin/role/assign', '管理组', 'POST');
 
 INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'customer', '客户', 'GET');

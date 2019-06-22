@@ -16,5 +16,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
        Route::post('admin/role', 'RoleController@create');
        Route::put('admin/role', 'RoleController@update');
        Route::delete('admin/role', 'RoleController@delete');
+       Route::post('admin/role/assign', 'RoleController@assign');
     });
 });
