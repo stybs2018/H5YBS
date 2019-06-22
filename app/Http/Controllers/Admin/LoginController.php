@@ -42,8 +42,6 @@ class LoginController extends Controller
     {
         $admin = Cache::pull($request->input('access_token'));
         unset($admin->password);
-        var_dump(LoginForm::getAuth($admin->role));
-        exit;
         session(['admin' => $admin]);
         session(['permission' => LoginForm::getAuth($admin->role)]);
         return redirect(env('ADMIN_PREFIX', 'admin'));

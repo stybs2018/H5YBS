@@ -10,6 +10,11 @@ class DefaultController extends Controller
     //
     public function index()
     {
-        echo 'ok';
+        $menu = session('permission')['Menu'];
+        $admin = session('admin');
+        return view('admin.index', [
+                'admin'=> $admin,
+                'menu' => $menu
+            ]);
     }
 }

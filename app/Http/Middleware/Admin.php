@@ -24,7 +24,7 @@ class Admin
         
         $permission = $request->session()->get('permission');
         
-        $excpet = [];
+        $excpet = [''];
         
         $path = explode($prefix, $request->path())[1];
         
