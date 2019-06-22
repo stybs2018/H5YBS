@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class DefaultController extends Controller
 {
@@ -32,6 +33,14 @@ class DefaultController extends Controller
                     abort(403, '无权限此操作');
                 }
                 return view('admin.auth.role_add');
+                break;
+            case 'update':
+                if (!in_array('api/admin/admin/role@PUT', $action)) {
+                    abort(403, '无权限此操作');
+                }
+                return view('admin.auth.role_upd', ['data' => 
+                    DB::table('admin_role')->where('id', $request->query('id'))->first()
+                ]);
                 break;
         }
     }

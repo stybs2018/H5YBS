@@ -10,8 +10,8 @@
     <script type="text/html" id="rowbar">
       <div class="layui-btn-container">
         <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm">授权</button>
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm">更新</button>
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm">删除</button>
+        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="update">更新</button>
+        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="delete">删除</button>
       </div>
     </script>
 @endsection
@@ -42,7 +42,7 @@
             //  实例化表格
             var tableIns = table.render(config);
             
-             table.on('toolbar', function (obj) {
+            table.on('toolbar', function (obj) {
                 switch (obj.event) {
                     case 'create': {
                         layer.open({
@@ -65,6 +65,58 @@
                     }
                 }
             })
+            
+            table.on('tool', function (obj) {
+                let event = obj.event;
+                let data = obj.data;
+                
+                switch (event) {
+                    case 'delete': {
+                        layer.confirm('是否删除这个角色', { title: '提示' },function (index) {
+                            $.ajax({
+                                type: 'DELETE',
+                                url: '/api/admin/admin/role',
+                                contentType: "application/json",
+                                dataType: "json",
+                                async: false,
+                                data: JSON.stringify({
+                                    role: [data.id]
+                                }),
+                                success: function (response) {
+                                    if (response.code === 3001) {
+                                        layer.msg('删除成功', { icon: 1, time: 1000 });
+                                        tableIns.reload(config)
+                                    } else {
+                                        layer.msg(response.message, { icon: 2 });
+                                    }
+                                }
+                            })
+                            layer.close(index)
+                        });
+                        break;
+                    }
+                    
+                    case 'update': {
+                        layer.open({
+                            title: '更新管理组',
+                            type: 2,
+                            area: ['300px', '330px'],
+                            content: "/{{ env('ADMIN_PREFIX', '_admin') }}/admin/role?action=update&id="+data.id,
+                            btn: ['更新'],
+                            shadeClose: true,
+                            yes: function (index, layero) {
+                                var body = layer.getChildFrame('body', index);
+                                var iframeWin = window[layero.find('iframe')[0]['name']];
+                                if (iframeWin.update()) {
+                                    layer.close(index);
+                                    tableIns.reload(config)
+                                }
+                            }
+                        })
+                        break;
+                    }
+                }
+            });
         });
     </script>
 @endsection

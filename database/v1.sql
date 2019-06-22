@@ -96,7 +96,8 @@ CREATE TABLE admin (
     updated_at dateTime DEFAULT NULL,
     logined_at dateTime DEFAULT NULL,
     status tinyint(4) NOT NULL DEFAULT 1,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (role) REFERENCES admin_role(id)
 ) ENGINE=InnoDB;
 
 INSERT INTO admin (username, role, nickname) VALUES ('admin', 1, '管理员');

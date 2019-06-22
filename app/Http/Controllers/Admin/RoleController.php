@@ -42,4 +42,23 @@ class RoleController extends Controller
             return ['code' => 3002, 'message' => '创建失败'];
         }
     }
+    
+    //  删除管理组
+    public function delete(Request $request)
+    {
+        $id = $request->input('role');
+
+        try {
+            if (DB::table('admin_role')->whereIn('id', $id)->delete()) {
+                return ['code' => 3001];
+            } else {
+                return ['code' => 3002, 'message' => '删除失败'];
+            }
+        } catch (\Illuminate\Database\QueryException $e) {
+            return ['code' => 3002, 'message' => '删除失败'];
+        }
+    }
+    
+    //  更新管理组
+    
 }
