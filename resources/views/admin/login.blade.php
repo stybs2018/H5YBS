@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="layui-form-item">
-          <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-login-submit">登 录</button>
+          <button id="form-submit" class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-login-submit">登 录</button>
         </div>
       </div>
     </div>
@@ -74,6 +74,12 @@
       $('#vercode').click(() => {
         $('#vercode').attr('src', "/{{ env('ADMIN_PREFIX', 'admin') }}/captcha?_token={{ csrf_token() }}&"+Math.random())
       })
+
+      $(document).keyup(function(event){
+        if(event.keyCode ==13){
+          $('#form-submit').click()
+        }
+      });
 
       //提交
       form.on('submit(LAY-user-login-submit)', function (obj) {
