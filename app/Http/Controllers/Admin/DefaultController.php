@@ -70,4 +70,16 @@ class DefaultController extends Controller
                 break;
         }
     }
+    
+    //  管理员页面
+    public function admin(Request $request)
+    {
+        $action = $request->query('action', 'store');
+        
+        switch ($action) {
+            case 'store':
+                return view('admin.auth.admin');
+                break;
+        }
+    }
 }
