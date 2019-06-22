@@ -9,7 +9,7 @@
     </script>
     <script type="text/html" id="rowbar">
       <div class="layui-btn-container">
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm">授权</button>
+        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="assign">授权</button>
         <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="update">更新</button>
         <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="delete">删除</button>
       </div>
@@ -108,6 +108,26 @@
                                 var body = layer.getChildFrame('body', index);
                                 var iframeWin = window[layero.find('iframe')[0]['name']];
                                 if (iframeWin.update()) {
+                                    layer.close(index);
+                                    tableIns.reload(config)
+                                }
+                            }
+                        })
+                        break;
+                    }
+                    
+                    case 'assign': {
+                        layer.open({
+                            title: '授权',
+                            type: 2,
+                            area: ['800px', '600px'],
+                            content: "/{{ env('ADMIN_PREFIX', '_admin') }}/admin/role?action=assign&id="+data.id,
+                            btn: ['保存'],
+                            shadeClose: true,
+                            yes: function (index, layero) {
+                                var body = layer.getChildFrame('body', index);
+                                var iframeWin = window[layero.find('iframe')[0]['name']];
+                                if (iframeWin.assign()) {
                                     layer.close(index);
                                     tableIns.reload(config)
                                 }

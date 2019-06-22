@@ -11,7 +11,7 @@
         @section('body')
         
         @show
-        <script src="/layuiadmin/layui/layui.js"></script>
+        <script src="/layuiadmin/layui/layui.js?1"></script>
         @yield('js')
     </body>
 </html>
