@@ -53,7 +53,7 @@ class LoginForm
     {
         $key = "[role-auth:$role]";
         $cache = Cache::get($key, false);
-        $prefix = env('ADMIN_PREFIX', 'admin');
+        $prefix = env('ADMIN_PREFIX', '_admin');
         if (!$cache) {
             $cache = [];
             $data = DB::table('admin_assign')
@@ -148,7 +148,7 @@ class LoginForm
                 if ($menu['route'] === '#') {
                     $html .= "<a class=\"menu-a\" href=\"javascript:;\">$menu[title]</a>";
                 } else {
-                    $html .= "<a class=\"menu-a\" href=\"javascript:;\" lay-href=\"/".env('ADMIN_PREFIX', 'admin')."/$menu[route]\">$menu[title]</a>";
+                    $html .= "<a class=\"menu-a\" href=\"javascript:;\" lay-href=\"/".env('ADMIN_PREFIX', '_admin')."/$menu[route]\">$menu[title]</a>";
                 }
                 $html .= '</dd>';
             }

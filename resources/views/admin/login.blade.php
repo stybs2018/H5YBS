@@ -42,7 +42,7 @@
             </div>
             <div class="layui-col-xs5">
               <div style="margin-left: 10px;">
-                <img src="/{{ env('ADMIN_PREFIX', 'admin') }}/captcha?_token={{ csrf_token() }}" class="layadmin-user-login-codeimg" id="vercode">
+                <img src="/{{ env('ADMIN_PREFIX', '_admin') }}/captcha?_token={{ csrf_token() }}" class="layadmin-user-login-codeimg" id="vercode">
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
       form.render();
 
       $('#vercode').click(() => {
-        $('#vercode').attr('src', "/{{ env('ADMIN_PREFIX', 'admin') }}/captcha?_token={{ csrf_token() }}&"+Math.random())
+        $('#vercode').attr('src', "/{{ env('ADMIN_PREFIX', '_admin') }}/captcha?_token={{ csrf_token() }}&"+Math.random())
       })
 
       $(document).keyup(function(event){
@@ -91,14 +91,14 @@
           success: function (response) {
             if (response.code == 2000) {
               layer.msg(response.message, { icon: 1, time: 1000 }, function () {
-                PostForm("/{{ env('ADMIN_PREFIX', 'admin') }}/login", "{{ csrf_token() }}", {
+                PostForm("/{{ env('ADMIN_PREFIX', '_admin') }}/login", "{{ csrf_token() }}", {
                   access_token: response.access_token
                 })
               })
             } else {
               layer.msg(response.message, { icon: 2, time: 1000 }, function () {
                 form.val('loginform', { vercode: null })
-                $('#vercode').attr('src', "/{{ env('ADMIN_PREFIX', 'admin') }}/captcha?_token={{ csrf_token() }}&"+Math.random())
+                $('#vercode').attr('src', "/{{ env('ADMIN_PREFIX', '_admin') }}/captcha?_token={{ csrf_token() }}&"+Math.random())
               })
             }
           }

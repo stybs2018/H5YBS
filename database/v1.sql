@@ -35,35 +35,35 @@ CREATE TABLE admin_permission (
 
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (1, 'Menu', '系统设置', 'layui-icon-set', '#', 0, 99);
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (2, 'Menu', '权限设置', '#', '#', 1, 99);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (3, 'Menu', '管理员', '#', '/admin', 2, 1);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (4, 'Menu', '管理组', '#', '/admin/role', 2, 2);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (3, 'Menu', '管理员', '#', 'admin', 2, 1);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (4, 'Menu', '管理组', '#', 'admin/role', 2, 2);
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (5, 'Menu', '客户管理', 'layui-icon-group', '#', 0, 1);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (6, 'Menu', '客户列表', '#', '/customer', 5, 1);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (7, 'Menu', '预约管理', '#', '/admin/reserve', 5, 2);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (6, 'Menu', '客户列表', '#', 'customer', 5, 1);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (7, 'Menu', '预约管理', '#', 'admin/reserve', 5, 2);
 
-INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-管理员', '/admin', '权限设置');
-INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-管理组', '/admin/role', '权限设置');
-INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-客户列表', '/customer', '客户管理');
-INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-预约管理', '/customer/reserve', '客户管理');
+INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-管理员', 'admin', '权限设置');
+INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-管理组', 'admin/role', '权限设置');
+INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-客户列表', 'customer', '客户管理');
+INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '页面-预约管理', 'customer/reserve', '客户管理');
 
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', '/admin', '管理员', 'GET');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '创建', '/admin', '管理员', 'POST');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', '/admin', '管理员', 'PUT');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '删除', '/admin', '管理员', 'DELETE');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'admin', '管理员', 'GET');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '创建', 'admin', '管理员', 'POST');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', 'admin', '管理员', 'PUT');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '删除', 'admin', '管理员', 'DELETE');
 
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', '/admin/role', '管理组', 'GET');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '创建', '/admin/role', '管理组', 'POST');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', '/admin/role', '管理组', 'PUT');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '删除', '/admin/role', '管理组', 'DELETE');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'admin/role', '管理组', 'GET');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '创建', 'admin/role', '管理组', 'POST');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', 'admin/role', '管理组', 'PUT');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '删除', 'admin/role', '管理组', 'DELETE');
 
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', '/admin/role/assign', '管理授权', 'GET');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '授权', '/admin/role/assign', '管理授权', 'POST');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'admin/role/assign', '管理授权', 'GET');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '授权', 'admin/role/assign', '管理授权', 'POST');
 
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', '/customer', '客户', 'GET');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', '/customer', '客户', 'PUT');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'customer', '客户', 'GET');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', 'customer', '客户', 'PUT');
 
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', '/customer/reserve', '客户预约', 'GET');
-INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', '/customer/reserve', '客户预约', 'PUT');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '获取', 'customer/reserve', '客户预约', 'GET');
+INSERT INTO admin_permission (type, name, _route, _module, _method) VALUES ('Action', '更新', 'customer/reserve', '客户预约', 'PUT');
 
 --
 -- Table for Admin Assign

@@ -44,13 +44,13 @@ class LoginController extends Controller
         unset($admin->password);
         session(['admin' => $admin]);
         session(['permission' => LoginForm::getAuth($admin->role)]);
-        return redirect(env('ADMIN_PREFIX', 'admin'));
+        return redirect(env('ADMIN_PREFIX', '_admin'));
     }
     
     // 登出
     public function logout(Request $request)
     {
         $request->session()->flush();
-        return redirect(env('ADMIN_PREFIX', 'admin'));
+        return redirect(env('ADMIN_PREFIX', '_admin'));
     }
 }

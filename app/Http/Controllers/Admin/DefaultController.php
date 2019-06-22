@@ -17,4 +17,10 @@ class DefaultController extends Controller
                 'menu' => $menu
             ]);
     }
+    
+    // 管理组页面
+    public function adminRole()
+    {
+        
+    }
 }

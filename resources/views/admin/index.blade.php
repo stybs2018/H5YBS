@@ -49,7 +49,7 @@
                             <dd><a lay-href="set/user/info.html">个人中心</a></dd>
                             <dd><a lay-href="set/user/password.html">修改密码</a></dd>
                             <hr>
-                            <dd style="text-align: center;"><a href="/{{ env('ADMIN_PREFIX', 'admin') }}/logout">退出</a></dd>
+                            <dd style="text-align: center;"><a href="/{{ env('ADMIN_PREFIX', '_admin') }}/logout">退出</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -58,7 +58,7 @@
             <!-- 侧边 -->
             <div class="layui-side layui-side-menu">
                 <div class="layui-side-scroll">
-                    <div class="layui-logo" lay-href="{{ env('ADMIN_PREFIX', 'admin') }}/workbench">
+                    <div class="layui-logo" lay-href="{{ env('ADMIN_PREFIX', '_admin') }}/workbench">
                         <span>牙博士H5平台</span>
                     </div>
 
@@ -88,8 +88,8 @@
                 </div>
                 <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
                     <ul class="layui-tab-title" id="LAY_app_tabsheader">
-                        <li lay-id="{{ env('ADMIN_PREFIX', 'admin') }}/workbench"
-                            lay-attr="{{ env('ADMIN_PREFIX', 'admin') }}/workbench" class="layui-this"><i
+                        <li lay-id="{{ env('ADMIN_PREFIX', '_admin') }}/workbench"
+                            lay-attr="{{ env('ADMIN_PREFIX', '_admin') }}/workbench" class="layui-this"><i
                                 class="layui-icon layui-icon-home"></i></li>
                     </ul>
                 </div>
@@ -99,7 +99,7 @@
             <!-- 主体 -->
             <div class="layui-body" id="LAY_app_body">
                 <div class="layadmin-tabsbody-item layui-show">
-                    <iframe src="{{ env('ADMIN_PREFIX', 'admin') }}/workbench" frameborder="0"
+                    <iframe src="{{ env('ADMIN_PREFIX', '_admin') }}/workbench" frameborder="0"
                         class="layadmin-iframe"></iframe>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                     icon: 1,
                     time: 1000
                 }, function () {
-                    window.location.href = "/{{ env('ADMIN_PREFIX', 'admin') }}/logout";
+                    window.location.href = "/{{ env('ADMIN_PREFIX', '_admin') }}/logout";
                 });
             });
         });

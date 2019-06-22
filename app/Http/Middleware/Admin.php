@@ -15,7 +15,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        $prefix = env('ADMIN_PREFIX', 'admin');
+        $prefix = env('ADMIN_PREFIX', '_admin');
         
         // 登录检查
         if (!$request->session()->has('admin')) {
@@ -24,12 +24,10 @@ class Admin
         
         $permission = $request->session()->get('permission');
         
-        $excpet = [''];
+        $excpet = [$prefix];
         
-        $path = explode($prefix, $request->path())[1];
-        
-        if (!in_array($path, $excpet) && !in_array($path, $permission['Page'])) {
-            return redirect($prefix . '/login');
+        if (!in_array($request->path(), $excpet) && !in_array($request->path(), $permission['Page'])) {
+            abort(403, '无权限访问此页面');
         }
         
         return $next($request);
