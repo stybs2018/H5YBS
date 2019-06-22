@@ -34,9 +34,9 @@ CREATE TABLE admin_permission (
 ) ENGINE=InnoDB;
 
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (1, 'Menu', '系统设置', 'layui-icon-set', '#', 0, 99);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (2, 'Menu', '权限设置', '#', '#', 0, 99);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (3, 'Menu', '管理员', '#', '/admin', 0, 1);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (4, 'Menu', '管理组', '#', '/admin/role', 0, 2);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (2, 'Menu', '权限设置', '#', '#', 1, 99);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (3, 'Menu', '管理员', '#', '/admin', 2, 1);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (4, 'Menu', '管理组', '#', '/admin/role', 2, 2);
 
 --
 -- Table for Admin Assign
