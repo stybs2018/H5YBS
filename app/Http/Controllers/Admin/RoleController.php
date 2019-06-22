@@ -24,7 +24,7 @@ class RoleController extends Controller
         return [
                 'code' => 0,
                 'message' => 'ok',
-                'total' => count($data),
+                'count' => DB::table('admin_role')->count(),
                 'data' => $data
             ]; 
     }
