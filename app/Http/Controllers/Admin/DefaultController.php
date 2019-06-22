@@ -21,9 +21,17 @@ class DefaultController extends Controller
     // 管理组页面
     public function adminRole(Request $request)
     {
-        switch ($request->method()) {
-            case 'GET': 
+        $action = session('permission')['Action'];
+        
+        switch ($request->query('action', 'store')) {
+            case 'store': 
                 return view('admin.auth.role');
+                break;
+            case 'create':
+                if (!in_array('api/admin/admin/role@POST', $action)) {
+                    abort(403, '无权限此操作');
+                }
+                return view('admin.auth.role_add');
                 break;
         }
     }

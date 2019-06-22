@@ -13,5 +13,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     
     Route::middleware(App\Http\Middleware\_Admin::class)->group(function () {
        Route::get('admin/role', 'RoleController@store'); 
+       Route::post('admin/role', 'RoleController@create');
     });
 });

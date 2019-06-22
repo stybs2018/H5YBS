@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
-    //
+    //  获取管理组数据
     public function store(Request $request) 
     {
         $page = $request->query('page');
@@ -16,6 +16,7 @@ class RoleController extends Controller
         
         $data = DB::table('admin_role')
             ->where('status', '>=', -1)
+            ->orderBy('id', 'desc')
             ->offset($limit * ($page - 1))
             ->limit($limit)
             ->get();
@@ -26,5 +27,19 @@ class RoleController extends Controller
                 'total' => count($data),
                 'data' => $data
             ]; 
+    }
+    
+    //  创建管理组
+    public function create(Request $request)
+    {
+        try {
+            if (DB::table('admin_role')->insert($request->input())) {
+                return ['code' => 3001 ];
+            } else {
+                return ['code' => 3002, 'message' => '创建失败'];
+            } 
+        } catch (\Illuminate\Database\QueryException $e) {
+            return ['code' => 3002, 'message' => '创建失败'];
+        }
     }
 }
