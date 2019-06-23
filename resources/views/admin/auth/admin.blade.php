@@ -38,7 +38,7 @@
                         return d.status == 1 ? '正常' : '禁用'   
                     }},
                     { field: 'logined_at', title: '最后登录', width: 180, align: 'center' },
-                    { title: '操作', align: 'center', width: 210, toolbar: '#rowbar' }
+                    { title: '操作', align: 'center', width: 150, toolbar: '#rowbar' }
                 ]]
             };
             //  实例化表格

@@ -59,6 +59,10 @@ class AdminController extends Controller
     {
         $id = $request->input('id');
 
+        if (DB::table('admin')->count() <= 1) {
+            return ['code' => 3002, 'message' => '至少保留一个管理员账号'];
+        }
+
         try {
             if (DB::table('admin')->whereIn('id', $id)->delete()) {
                 return ['code' => 3001];
