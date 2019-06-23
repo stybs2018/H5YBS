@@ -101,3 +101,46 @@ CREATE TABLE admin (
 ) ENGINE=InnoDB;
 
 INSERT INTO admin (username, role, nickname) VALUES ('admin', 1, '管理员');
+
+
+--
+-- Table for Customer
+--
+DROP TABLE IF EXISTS customer;
+
+CREATE TABLE customer (
+    id int(11) unsigned NOT NULL AUTO_INCREMENT,
+    fid varchar(20) NOT NULL UNIQUE,
+    openid varchar(255) NOT NULL,
+    nickname varchar(255),
+    realname varchar(255),
+    telephone varchar(32),
+    sex tinyint(4) DEFAULT 0,
+    province varchar(255),
+    city varchar(255),
+    country varchar(255),
+    avatar varchar(255),
+    unionid varchar(255),
+    created_at dateTime,
+    logined_at dateTime,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+--
+-- Table for Customer Reserve
+--
+
+DROP TABLE IF EXISTS customer_reserve;
+
+CREATE TABLE customer_reserve (
+    id int(11) unsigned NOT NULL AUTO_INCREMENT,
+    rid varchar(32) NOT NULL UNIQUE,
+    username varchar(32) NOT NULL,
+    telephone varchar(32) NOT NULL,
+    isft tinyint(4) NOT NULL DEFAULT 1,
+    rtime dateTime NOT NULL,
+    created_at dateTime,
+    updated_at dateTime,
+    status tinyint(4) NOT NULL DEFAULT 1,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB;

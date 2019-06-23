@@ -6,9 +6,12 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::middleware(App\Http\Middleware\WxLogin::class)->group(function () {
+    Route::get('/', 'DefaultController@index');
+    Route::view('reserve', 'app.reserve'); 
 });
+
 
 Route::namespace('Admin')->prefix(env('ADMIN_PREFIX', '_admin'))->group(function () {
     Route::get('captcha', 'LoginController@captcha');
