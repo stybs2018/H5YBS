@@ -8,6 +8,7 @@ use App\Lib\Captcha;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Admin\LoginForm;
 use App\Models\Admin\Auth; 
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -44,6 +45,7 @@ class LoginController extends Controller
         unset($admin->password);
         session(['admin' => $admin]);
         session(['permission' => LoginForm::getAuth($admin->role)]);
+        DB::table('admin')->where('id', $admin->id)->update(['logined_at' => date('Y-m-d H:i:s')]);
         return redirect(env('ADMIN_PREFIX', '_admin'));
     }
     

@@ -80,6 +80,31 @@ class DefaultController extends Controller
             case 'store':
                 return view('admin.auth.admin');
                 break;
+            case 'create':
+                return view('admin.auth.admin_add', [
+                        'role' => $this->roleToOption()
+                    ]);
+                break;
+            case 'update':
+                $data = DB::table('admin')
+                    ->select('username', 'nickname', 'telephone', 'status', 'role' )
+                    ->where('id', $request->query('id'))
+                    ->first();
+                return view('admin.auth.admin_upd', [
+                        'id'   => $request->query('id'),
+                        'role' => $this->roleToOption(),
+                        'data' => $data
+                    ]);
+                break;
         }
+    }
+    
+    private function roleToOption()
+    {
+        $html = '';
+        foreach (DB::table('admin_role')->where('status', '>=', 0)->get() as $i) {
+            $html .= "<option value=$i->id>$i->name</option>";
+        }
+        return $html;
     }
 }

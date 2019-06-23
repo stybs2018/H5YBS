@@ -9,7 +9,6 @@
     </script>
     <script type="text/html" id="rowbar">
       <div class="layui-btn-container">
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="password">修改密码</button>
         <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="update">更新</button>
         <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" lay-event="delete">删除</button>
       </div>
@@ -51,7 +50,7 @@
                         layer.open({
                             title: '创建管理员',
                             type: 2,
-                            area: ['800px', '600px'],
+                            area: ['400px', '450px'],
                             content: "/{{ env('ADMIN_PREFIX', '_admin') }}/admin?action=create",
                             btn: ['创建'],
                             shadeClose: true,
@@ -83,7 +82,7 @@
                                 dataType: "json",
                                 async: false,
                                 data: JSON.stringify({
-                                    role: [data.id]
+                                    id: [data.id]
                                 }),
                                 success: function (response) {
                                     if (response.code === 3001) {
@@ -99,31 +98,11 @@
                         break;
                     }
                     
-                    case 'password': {
-                         layer.open({
-                            title: '修改密码',
-                            type: 2,
-                            area: ['300px', '320px'],
-                            content: "/{{ env('ADMIN_PREFIX', '_admin') }}/admin?action=update&id="+data.id,
-                            btn: ['确定'],
-                            shadeClose: true,
-                            yes: function (index, layero) {
-                                var body = layer.getChildFrame('body', index);
-                                var iframeWin = window[layero.find('iframe')[0]['name']];
-                                if (iframeWin.update()) {
-                                    layer.close(index);
-                                    tableIns.reload(config)
-                                }
-                            }
-                        })
-                        break;
-                    }
-                    
                     case 'update': {
                         layer.open({
                             title: '更新管理员',
                             type: 2,
-                            area: ['800px', '600px'],
+                            area: ['400px', '450px'],
                             content: "/{{ env('ADMIN_PREFIX', '_admin') }}/admin?action=update&id="+data.id,
                             btn: ['更新'],
                             shadeClose: true,

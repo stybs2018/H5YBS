@@ -50,6 +50,7 @@ class RoleController extends Controller
 
         try {
             if (DB::table('admin_role')->whereIn('id', $id)->delete()) {
+                DB::table('admin_assign')->where('role', $id)->delete();
                 return ['code' => 3001];
             } else {
                 return ['code' => 3002, 'message' => '删除失败'];
