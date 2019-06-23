@@ -99,6 +99,18 @@ class DefaultController extends Controller
         }
     }
     
+    //  客户页面
+    public function customer(Request $request)
+    {
+        $action = $request->query('action', 'store');
+        
+        switch ($action) {
+            case 'store':
+                return view('admin.customer.store');
+                break;
+        }
+    }
+    
     private function roleToOption()
     {
         $html = '';

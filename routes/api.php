@@ -21,5 +21,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
        Route::post('admin', 'AdminController@create');
        Route::put('admin', 'AdminController@update');
        Route::delete('admin', 'AdminController@delete');
+       Route::get('customer', 'CustomerController@store');
     });
 });

@@ -23,5 +23,6 @@ Route::namespace('Admin')->prefix(env('ADMIN_PREFIX', '_admin'))->group(function
        Route::get('/', 'DefaultController@index'); 
        Route::get('admin/role', 'DefaultController@adminRole');
        Route::get('admin', 'DefaultController@admin');
+       Route::get('customer', 'DefaultController@customer');
     });
 });
