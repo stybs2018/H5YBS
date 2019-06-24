@@ -22,5 +22,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
        Route::put('admin', 'AdminController@update');
        Route::delete('admin', 'AdminController@delete');
        Route::get('customer', 'CustomerController@store');
+       
+       Route::get('customer/reserve', 'ReserveController@store');
     });
 });

@@ -24,7 +24,7 @@ class Admin
         
         $permission = $request->session()->get('permission');
         
-        $excpet = [$prefix];
+        $excpet = [$prefix, $prefix.'/workbench'];
         
         if (!in_array($request->path(), $excpet) && !in_array($request->path(), $permission['Page'])) {
             abort(403, '无权限访问此页面');

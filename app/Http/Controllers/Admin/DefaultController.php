@@ -111,6 +111,18 @@ class DefaultController extends Controller
         }
     }
     
+    //  预约页面
+    public function reserve(Request $request)
+    {
+        $action = $request->query('action', 'store');
+        
+        switch ($action) {
+            case 'store':
+                return view('admin.reserve.store');
+                break;
+        }
+    }
+    
     private function roleToOption()
     {
         $html = '';

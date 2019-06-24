@@ -40,7 +40,7 @@ INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES 
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (4, 'Menu', '管理组', '#', 'admin/role', 2, 2);
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (5, 'Menu', '客户管理', 'layui-icon-group', '#', 0, 1);
 INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (6, 'Menu', '客户列表', '#', 'customer', 5, 1);
-INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (7, 'Menu', '预约管理', '#', 'admin/reserve', 5, 2);
+INSERT INTO admin_permission(id, type, name, _icon, _route, _pid, _sort) VALUES (7, 'Menu', '预约管理', '#', 'customer/reserve', 5, 2);
 
 INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '管理员', 'admin', '权限设置');
 INSERT INTO admin_permission (type, name, _route, _module) VALUES ('Page', '管理组', 'admin/role', '权限设置');
@@ -134,8 +134,13 @@ DROP TABLE IF EXISTS customer_reserve;
 
 CREATE TABLE customer_reserve (
     id int(11) unsigned NOT NULL AUTO_INCREMENT,
+    fid varchar(20) NOT NULL,
     rid varchar(32) NOT NULL UNIQUE,
     username varchar(32) NOT NULL,
+    age tinyint(4),
+    sex varchar(32),
+    desc1 varchar(32),
+    desc2 text,
     telephone varchar(32) NOT NULL,
     isft tinyint(4) NOT NULL DEFAULT 1,
     rtime dateTime NOT NULL,
