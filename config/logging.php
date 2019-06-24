@@ -89,6 +89,12 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+        
+        'tasklog' => [
+            'driver' => 'single',
+            'path' => storage_path("logs/task/".date('Ymd').".log"),
+            'level' => 'info',
+        ],
     ],
 
 ];

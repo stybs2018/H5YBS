@@ -13,10 +13,6 @@
                     <td>{{ $data->nickname }}</td>
                 </tr>
                 <tr>
-                    <td>是否关注公众号</td>
-                    <td>{{ $data->unionid }}</td>
-                </tr>
-                <tr>
                     <td>姓名</td>
                     <td>{{ $data->realname }}</td>
                 </tr>
@@ -35,6 +31,18 @@
                         <td>女</td>
                         @break
                     @endswitch
+                </tr>
+                <tr>
+                    <td>是否关注公众号</td>
+                    <td>{{ $data->unionid }}</td>
+                </tr>
+                <tr>
+                    <td>关注时间</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>关注渠道</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>省份</td>

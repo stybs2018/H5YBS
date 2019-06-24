@@ -26,7 +26,7 @@ class WxHelper
         $params['data'] = $message;
         $accesstoken = $this->getAccessToken();
         $res = Crq::post("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=$accesstoken", $params);
-        return json_decode($res)->errcode === 0;
+        return $res['errcode'] === 0;
     }
     
     // 获取AccessToken
@@ -34,7 +34,6 @@ class WxHelper
     {
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->appsecret}";
         $res = Crq::get($url);
-        $res = json_decode($res,1);
         if(isset($res['errcode']) && $res['errcode']!=0) {
             throw new \Exception($res['errmsg']);
         }

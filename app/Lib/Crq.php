@@ -25,7 +25,7 @@ class Crq
         $Status = curl_getinfo($curl);
         curl_close($curl);
         if(intval($Status["http_code"]) == 200){
-            return $Content;
+            return json_decode($Content, true);
         }else{
             return false;
         }
@@ -44,6 +44,6 @@ class Crq
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
         $response = curl_exec($curl);
         curl_close($curl);
-        return $response;
+        return json_decode($response, true);
     }
 }
