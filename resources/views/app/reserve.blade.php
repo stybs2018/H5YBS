@@ -145,6 +145,10 @@
                 }
             }
             
+            if (params.rtime === null) {
+                params.rtime = ' '
+            }
+            
             $.ajax({
                 type: 'POST',
                 url: '/reserve',

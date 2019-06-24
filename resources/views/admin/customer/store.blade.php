@@ -11,8 +11,6 @@
     <script type="text/html" id="rowbar">
       <div class="layui-btn-container">
         <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs">详情</button>
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs">预约查询</button>
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs">消息通知</button>
       </div>
     </script>
 @endsection
@@ -28,7 +26,7 @@
                 elem: '#table',
                 toolbar: '#toolbar',
                 defaultToolbar: [],
-                height: 600,
+                height: 800,
                 url: '/api/admin/customer',
                 page: true,
                 cols: [[ //表头
@@ -42,7 +40,7 @@
                     { field: 'realname', title: '姓名', align: 'center' },
                     { field: 'telephone', title: '联系方式', align: 'center' },
                     { field: 'logined_at', title: '最后访问', width: 160, align: 'center' },
-                    { title: '', width: 200, toolbar: '#rowbar' }
+                    { title: '', width: 80, toolbar: '#rowbar', align: 'center' }
                   ]]
             };
             //  实例化表格

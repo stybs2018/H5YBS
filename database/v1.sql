@@ -143,7 +143,7 @@ CREATE TABLE customer_reserve (
     desc2 text,
     telephone varchar(32) NOT NULL,
     isft tinyint(4) NOT NULL DEFAULT 1,
-    rtime dateTime NOT NULL,
+    rtime dateTime,
     created_at dateTime,
     updated_at dateTime,
     status tinyint(4) NOT NULL DEFAULT 1,

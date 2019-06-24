@@ -14,8 +14,8 @@ class WxLogin
     
     function __construct($callback)
     {
-        $this->appid = 'wx1de37bab8e684be3';
-        $this->appsecret = '37ac45f5679619041078b8e0a458c24b';
+        $this->appid = env('APPID');;
+        $this->appsecret = env('APPSECRET');
         $this->callback = $callback;
         $this->local = 'https://h5.styay.com';
         

@@ -22,6 +22,8 @@ Route::namespace('Admin')->prefix(env('ADMIN_PREFIX', '_admin'))->group(function
     Route::post('login', 'LoginController@login');
     Route::get('logout', 'LoginController@logout');
     
+    Route::get('test', 'TestController@run');
+    
     Route::middleware(App\Http\Middleware\Admin::class)->group(function () {
         Route::get('/', 'DefaultController@index'); 
         Route::view('workbench', 'admin.workbench');

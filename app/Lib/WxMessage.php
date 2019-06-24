@@ -13,8 +13,8 @@ class WxMessage
     function __construct($openid, $tpl, $message)
     {
         $this->tpl = $tpl;
-        $this->appid = 'wx1de37bab8e684be3';
-        $this->appsecret = '37ac45f5679619041078b8e0a458c24b';
+        $this->appid = env('APPID');
+        $this->appsecret = env('APPSECRET');
         $this->openid = $openid;
         $this->message = $message;
     }
@@ -34,8 +34,9 @@ class WxMessage
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->appsecret}";
         $res = $this->curl_get($url);
         $res = json_decode($res,1);
-        
-        if(isset($res['errcode']) && $res['errcode']!=0) throw new Exception($res['errmsg']);
+        if(isset($res['errcode']) && $res['errcode']!=0) {
+            throw new \Exception($res['errmsg']);
+        }
         return $res['access_token'];
     }
     

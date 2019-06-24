@@ -16,7 +16,6 @@
       <div class="layui-btn-container">
             <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">预约信息</button>
             <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs" lay-event="finish">确认</button>
-            <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs">消息通知</button>
       </div>
     </script>
     <script type="text/html" id="rowbar2">
@@ -83,7 +82,7 @@
                 elem: '#table',
                 toolbar: '#toolbar',
                 defaultToolbar: [],
-                height: 600,
+                height: 800,
                 url: '/api/admin/customer/reserve?',
                 page: true,
                 cols: cols[status]
