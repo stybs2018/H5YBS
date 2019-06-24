@@ -108,6 +108,12 @@ class DefaultController extends Controller
             case 'store':
                 return view('admin.customer.store');
                 break;
+            
+            case 'preview':
+                return view('admin.customer.preview', [
+                    'data' => DB::table('customer')->where('fid', $request->query('id', -1))->first()    
+                ]);
+                break;
         }
     }
     

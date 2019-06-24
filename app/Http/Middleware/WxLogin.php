@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\Customer;
-use App\Lib\WxLogin as Wx;
+use App\Lib\WxLogin as WxL;
 use Illuminate\Support\Facades\Cache;
+
 
 class WxLogin
 {
@@ -24,7 +25,7 @@ class WxLogin
         
         if ($open) {
             if (!$request->session()->has('user')) {
-                $wx = new Wx($request->path());
+                $wx = new WxL($request->path());
                 $res = $wx->getUser($request->query('code', null));
                 $customer = $model->getByOpenid($res['openid']);
                 // 不是会员则注册

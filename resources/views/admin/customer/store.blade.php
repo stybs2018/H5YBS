@@ -10,7 +10,7 @@
     </script>
     <script type="text/html" id="rowbar">
       <div class="layui-btn-container">
-        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs">详情</button>
+        <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-xs" lay-event="preview">详情</button>
       </div>
     </script>
 @endsection
@@ -70,7 +70,16 @@
                 let event = obj.event;
                 let data = obj.data;
                 switch (event) {
-                    
+                    case 'preview': {
+                        layer.open({
+                            title: data.fid,
+                            type: 2,
+                            area: ['400px', '580px'],
+                            content: "/{{ env('ADMIN_PREFIX', '_admin') }}/customer?action=preview&id=" + data.fid,
+                            shadeClose: true
+                        })
+                        break;
+                    }
                 }
                 
             });
