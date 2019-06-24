@@ -40,7 +40,7 @@
                 <label for="" class="weui-label">症状描述</label>
             </div>
             <div class="weui-cell__bd">
-                <textarea class="weui-textarea" id="desc2" placeholder="描述您的症状, 方便牙博士为您预约合适的医生" rows="3"></textarea>
+                <textarea class="weui-textarea" id="desc2" placeholder="描述您的症状, 方便牙博士为您预约合适的医生" rows="3" style="resize: none;"></textarea>
             </div>
         </div>
     </div>
@@ -120,7 +120,7 @@
             params.age = $('#age').val();
             params.sex = $('#sex').val();
             params.desc1 = $('#desc1').text();
-            params.desc2 = $('#desc2').text();
+            params.desc2 = $('#desc2').val();
             params.telephone = $('#telephone').val();
             params.time = $('#yytime').val();
             params.isft = isft;

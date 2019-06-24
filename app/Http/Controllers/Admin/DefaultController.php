@@ -120,6 +120,12 @@ class DefaultController extends Controller
             case 'store':
                 return view('admin.reserve.store');
                 break;
+            case 'edit':
+                return view('admin.reserve.edit', [
+                    'id' =>  $request->query('rid', -1),
+                    'data' => DB::table('customer_reserve')->where('rid', $request->query('rid', -1))->first()    
+                ]);
+                break;
         }
     }
     

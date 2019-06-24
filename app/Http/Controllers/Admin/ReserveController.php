@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Lib\WxMessage;
 
 class ReserveController extends Controller
 {
@@ -40,5 +41,45 @@ class ReserveController extends Controller
             'data' => $data,
             'message' => 'ok'
         ];  
+    }
+    
+    public function update(Request $request)
+    {
+        if ($request->query('action', false) === 'finish') {
+            $where = $request->input();
+            unset($where['action']);
+            
+            $openid = DB::table('customer')->where('fid', $where['fid'])->first()->openid;
+            $data = DB::table('customer_reserve')->where('rid', $where['rid'])->first();
+            try {
+                $message = new WxMessage($openid, 'LLLF0xLhurORvO57XXV7JOwaQIvlKPRc5PucQrUpJ74', [
+                    "yytime" => ['value' => $data->rtime ],
+                    "yyname" => ['value' => $data->username ],
+                    "yytele" => ['value' => $data->telephone ]
+                ]);
+                
+                if (json_decode($message->send())->errcode === 0) {
+                    if (DB::table('customer_reserve')->where($where)->update(['status' => 2, 'updated_at' => date('Y-m-d H:i:s')])) {
+                        return ['code' => 3001, 'message' => '确认成功'];
+                    } else {
+                        return ['code' => 3002, 'message' => '确认失败'];
+                    }
+                } else {
+                    return ['code' => 3002, 'message' => '确认失败'];
+                }
+            } catch (\Exception $e) {
+                return ['code' => 3002, 'message' => $e->getMessage() ];
+            }
+        } else {
+            $rid = $request->query('id', -1);
+        
+            $params = $request->input();
+            unset($params['id']);
+            if (DB::table('customer_reserve')->where('rid', $rid)->update($params)) {
+                return ['code' => 3001, 'message' => '修改成功'];
+            } else {
+                return ['code' => 3002, 'message' => '修改失败'];
+            }
+        }
     }
 }

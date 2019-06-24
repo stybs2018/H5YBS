@@ -24,5 +24,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
        Route::get('customer', 'CustomerController@store');
        
        Route::get('customer/reserve', 'ReserveController@store');
+       Route::put('customer/reserve', 'ReserveController@update');
     });
 });

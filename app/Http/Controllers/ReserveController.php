@@ -39,6 +39,7 @@ class ReserveController extends Controller
                 return ['code' => 3004, 'message' => '预约失败, 请拨打电话88896666预约'];
             }
         } catch (\Illuminate\Database\QueryException $e) {
+            return ['code' => 3004, 'message' => $e->getMessage() ];
             return ['code' => 3004, 'message' => '预约失败, 请拨打电话88896666预约'];
         }
     }
@@ -47,7 +48,7 @@ class ReserveController extends Controller
     {
         $user = session('user')->fid;
         
-        if (DB::table('customer_reserve')->where('fid', $user)->update(['status' => 3])) {
+        if (DB::table('customer_reserve')->where(['status' => 1, 'fid' => $user])->update(['status' => 3])) {
             return ['code' => 3006, 'message' => '预约取消成功'];
         } else {
             return ['code' => 3007, 'message' => '预约取消失败'];

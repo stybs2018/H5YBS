@@ -18,7 +18,7 @@
                         @if ($i->desc2 != null)
                             <p>症状描述:</p>
                             <textarea class="yydesc">
-                                &nbsp;&nbsp;{{ $i->desc2 }}
+                                {{ $i->desc2 }}
                             </textarea>
                         @endif
                         @switch($i->status)
@@ -53,10 +53,9 @@
         .yydesc {
             font-size: .8rem;
             color: #d3d3d3;
-            width: 100%;
             border: 0;
             padding: 0;
-            margin: 0;
+            text-align: left;
         }
         
         .noyy {
