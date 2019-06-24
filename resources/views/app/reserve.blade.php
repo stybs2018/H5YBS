@@ -148,6 +148,9 @@
             $.ajax({
                 type: 'POST',
                 url: '/reserve',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 contentType:"application/json;charset=utf-8",
                 data: JSON.stringify(params),
                 success: function (response) {
