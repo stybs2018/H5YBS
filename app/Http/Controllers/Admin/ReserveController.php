@@ -52,13 +52,13 @@ class ReserveController extends Controller
             $openid = DB::table('customer')->where('fid', $where['fid'])->first()->openid;
             $data = DB::table('customer_reserve')->where('rid', $where['rid'])->first();
             try {
-                $message = new WxMessage($openid, 'LLLF0xLhurORvO57XXV7JOwaQIvlKPRc5PucQrUpJ74', [
+                $wx = new WxHelper();
+
+                if ($wx->sendMsg($openid, 'LLLF0xLhurORvO57XXV7JOwaQIvlKPRc5PucQrUpJ74', [
                     "yytime" => ['value' => $data->rtime ],
                     "yyname" => ['value' => $data->username ],
                     "yytele" => ['value' => $data->telephone ]
-                ]);
-                // var_dump($message->send());exit;
-                if (json_decode($message->send())->errcode === 0) {
+                ])) {
                     if (DB::table('customer_reserve')->where($where)->update(['status' => 2, 'updated_at' => date('Y-m-d H:i:s')])) {
                         return ['code' => 3001, 'message' => '确认成功'];
                     } else {
